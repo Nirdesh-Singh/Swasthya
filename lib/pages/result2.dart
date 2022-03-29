@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:swasthya/pages/symptoms.dart';
 
-class Results1 extends StatefulWidget {
-  const Results1({Key? key}) : super(key: key);
+class Results2 extends StatefulWidget {
+  const Results2({Key? key}) : super(key: key);
 
   @override
-  State<Results1> createState() => _ResultsState();
+  State<Results2> createState() => _ResultsState();
 }
 
-class _ResultsState extends State<Results1> {
+class _ResultsState extends State<Results2> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -41,7 +41,7 @@ class _ResultsState extends State<Results1> {
                 color: Colors.tealAccent,
               ),
               SizedBox(height: 30.0),
-              Text("It seems that you have Omicron variant of Coronavirus",
+              Text("It seems that you have Delta variant of Coronavirus",
                   style: TextStyle(
                     color: Colors.green,
                     letterSpacing: 2.0,
@@ -49,7 +49,7 @@ class _ResultsState extends State<Results1> {
                     fontWeight: FontWeight.bold,
                   )),
               SizedBox(height: 30.0),
-              Text("You must quarantine yourself for 7 days ",
+              Text("You must quarantine yourself for 15 days ",
                   style: TextStyle(
                     color: Colors.green,
                     letterSpacing: 2.0,
@@ -57,7 +57,7 @@ class _ResultsState extends State<Results1> {
                     fontWeight: FontWeight.bold,
                   )),
               SizedBox(height: 30.0),
-              Text("After 7 days has passed, you must go for a Covid Test ",
+              Text("After 15 days has passed, you must go for a Covid Test ",
                   style: TextStyle(
                     color: Colors.green,
                     letterSpacing: 2.0,

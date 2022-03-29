@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:swasthya/pages/checkbox_state.dart';
 import 'package:swasthya/pages/result.dart';
+import 'package:swasthya/pages/result2.dart';
 
 class Symptoms extends StatefulWidget {
   const Symptoms({Key? key}) : super(key: key);
@@ -10,7 +11,34 @@ class Symptoms extends StatefulWidget {
 }
 
 class _SymptomsState extends State<Symptoms> {
-  bool value = false;
+  var omi = 0;
+  var del = 0;
+  var omicron = [
+    'Nasal Congestion',
+    'Runny Nose',
+    'Generalized Body Ache',
+    'Low Grade Fever',
+    'Headache',
+    'Joint Pain',
+    'Diarrhoea',
+    'Rashes on the Skin',
+    'Discolouration of fingers or toes',
+    'Red or Irritated eyes',
+    'Night Sweats',
+    'Backache',
+    'Abdominal Cramps',
+    'Loss of Apetite'
+  ];
+
+  var delta = [
+    'Breathlessness',
+    'High Fever',
+    'Loss of smell or taste',
+    'Shakes',
+    'Chills',
+    'Tiredness',
+    'Sneezing'
+  ];
 
   final notifications = [
     CheckBoxState(title: 'Cough'),
@@ -63,8 +91,15 @@ class _SymptomsState extends State<Symptoms> {
           ],
         ),
         floatingActionButton: FloatingActionButton.extended(
-          onPressed: () => Navigator.pushReplacement(context,
-              MaterialPageRoute(builder: (context) => const Results())),
+          onPressed: () {
+            if (del >= omi) {
+              Navigator.pushReplacement(context,
+                  MaterialPageRoute(builder: (context) => const Results2()));
+            } else {
+              Navigator.pushReplacement(context,
+                  MaterialPageRoute(builder: (context) => const Results1()));
+            }
+          },
           label: const Text('Results'),
           icon: const Icon(Icons.arrow_forward),
           backgroundColor: Colors.pink,
@@ -81,6 +116,20 @@ class _SymptomsState extends State<Symptoms> {
           checkbox.title,
           style: const TextStyle(fontSize: 20),
         ),
-        onChanged: (value) => setState(() => checkbox.value = value!),
+        onChanged: (value) => setState(() {
+          checkbox.value = value!;
+          if (checkbox.value && omicron.contains(checkbox.title)) {
+            omi = omi + 1;
+          }
+          if (checkbox.value && delta.contains(checkbox.title)) {
+            del = del + 1;
+          }
+          if (checkbox.value == false && omicron.contains(checkbox.title)) {
+            omi = omi - 1;
+          }
+          if (checkbox.value == false && delta.contains(checkbox.title)) {
+            del = del - 1;
+          }
+        }),
       );
 }
