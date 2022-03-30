@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:swasthya/pages/checkbox_state.dart';
+import 'package:swasthya/pages/information.dart';
 import 'package:swasthya/pages/result.dart';
 import 'package:swasthya/pages/result2.dart';
 
@@ -88,6 +89,22 @@ class _SymptomsState extends State<Symptoms> {
           children: [
             ...notifications.map(buildSingleCheckbox).toList(),
             const SizedBox(width: 10, height: 10),
+            Align(
+              alignment: Alignment.bottomLeft,
+              child: TextButton.icon(
+                onPressed: () => Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const Information())),
+                label: const Text(
+                  'Information',
+                  style: TextStyle(
+                    fontSize: 24.0,
+                  ),
+                ),
+                icon: const Icon(Icons.info),
+              ),
+            ),
           ],
         ),
         floatingActionButton: FloatingActionButton.extended(
